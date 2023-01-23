@@ -41,6 +41,16 @@ p {
   display: inline-table;
 }
 
+.numBlockG {
+  background-color: green;
+  display: inline-table;
+}
+
+.numBlockB {
+  background-color: blue;
+  display: inline-table;
+}
+
 .fadeUp {
   animation-name: exampleFU;
   animation-duration: 1.5s;

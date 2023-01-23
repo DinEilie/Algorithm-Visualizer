@@ -68,16 +68,16 @@
             <label class="btn btn-dark" for="btnradio1">Bubble</label>
 
             <input type="radio" class="btn-check game-btn" name="btnradio" id="btnradio2" autocomplete="off" />
-            <label class="btn btn-dark" for="btnradio2">Selection</label>
+            <label class="btn btn-dark" for="btnradio2">Insertion</label>
 
             <input type="radio" class="btn-check game-btn" name="btnradio" id="btnradio3" autocomplete="off" />
-            <label class="btn btn-dark" for="btnradio3">Insertion</label>
+            <label class="btn btn-dark" for="btnradio3">Merge</label>
 
             <input type="radio" class="btn-check game-btn" name="btnradio" id="btnradio4" autocomplete="off" />
-            <label class="btn btn-dark" for="btnradio4">Merge</label>
+            <label class="btn btn-dark" for="btnradio4">Quick</label>
 
             <input type="radio" class="btn-check game-btn" name="btnradio" id="btnradio5" autocomplete="off" />
-            <label class="btn btn-dark" for="btnradio5">Quick</label>
+            <label class="btn btn-dark" for="btnradio5">Counting</label>
           </div>
         </div>
       </nav>
@@ -88,7 +88,28 @@
   <section>
     <div class="container">
       <!-- Game Title -->
-      <h1 id="level-title" class="text-center fadeDown">Algorithm Visualizer</h1>
+      <h1 id="title" class="text-center fadeDown">Algorithm Visualizer</h1><br>
+      <div class="row">
+        <div class="col" style="display: inline-block;">
+          <h2 id="comparisons0" class="text-center fadeDown"></h2>
+        </div>
+        <div class="col" style="display: inline-block;">
+          <h2 id="comparisons1" class="text-center fadeDown"></h2>
+        </div>
+        <div class="col" style="display: inline-block;">
+          <h2 id="replacements0" class="text-center fadeDown"></h2>
+        </div>
+        <div class="col" style="display: inline-block;">
+          <h2 id="replacements1" class="text-center fadeDown"></h2>
+        </div>
+        <div class="col" style="display: inline-block;">
+          <h2 id="timing0" class="text-center fadeDown"></h2>
+        </div>
+        <div class="col" style="display: inline-block;">
+          <h2 id="timing1" class="text-center fadeDown"></h2>
+        </div>
+      </div>
+
 
       <!-- Game Menu -->
       <div class="modal fade" id="difficultyPopup" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -114,23 +135,28 @@
               </p>
               <h2>Attributes:</h2>
               <br />
-              <div class="form-floating mb-2">
-                <select class="form-select" id="arraySize" aria-label="Floating label select example">
-                  <option value="50" selected>50</option>
-                  <option value="100">100</option>
-                  <option value="500">500</option>
-                  <option value="1000">1000</option>
-                </select>
-                <label for="arraySize">Choose array size</label>
+              <div class="dropdown" style="display: inline-block;">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="arraySize" data-bs-toggle="dropdown"
+                  aria-expanded="false">
+                  Array Length
+                </button>
+                <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="arraySize">
+                  <li><a id="length-50" class="game-btn dropdown-item active" href="#">50</a></li>
+                  <li><a id="length-75" class="game-btn dropdown-item" href="#">75</a></li>
+                  <li><a id="length-100" class="game-btn dropdown-item" href="#">100</a></li>
+                  <li><a id="length-150" class="game-btn dropdown-item" href="#">150</a></li>
+                </ul>
               </div>
-              <div class="form-floating">
-                <select class="form-select" id="arraySpeed" aria-label="Floating label select example">
-                  <option value="5" selected>5</option>
-                  <option value="100">100</option>
-                  <option value="500">500</option>
-                  <option value="1000">1000</option>
-                </select>
-                <label for="arraySpeed">Choose iteration speed (miliseconds)</label>
+              <div class="dropdown" style="display: inline-block;">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="arraySpeed"
+                  data-bs-toggle="dropdown" aria-expanded="false">
+                  Iteration Speed (miliseconds)
+                </button>
+                <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="arraySpeed">
+                  <li><a id="speed-50" class="game-btn dropdown-item active" href="#">50</a></li>
+                  <li><a id="speed-500" class="game-btn dropdown-item" href="#">500</a></li>
+                  <li><a id="speed-1000" class="game-btn dropdown-item" href="#">1000</a></li>
+                </ul>
               </div>
             </div>
             <div class="modal-footer">
