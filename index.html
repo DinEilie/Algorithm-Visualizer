@@ -1,200 +1,345 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Press+Start+2P"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css"
+    />
+    <title>Algorithm Visualizer</title>
+  </head>
 
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous" />
-  <link rel="stylesheet" href="styles.css" />
-  <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" />
-  <title>Algorithm Visualizer</title>
-</head>
-
-<body>
-  <!-- Navbar -->
-  <section>
-    <div>
-      <nav class="navbar p-3 sticky-top navbar-expand-lg bg-body-tertiary border-bottom">
-        <a class="navbar-brand"><i class="bi bi-cup-hot-fill"></i></a>
-        <a class="navbar-brand fs-2" href="https://dineilie.github.io/Snake-Game/">Coding Challenges</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item dropdown">
-              <button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                Browse More
-              </button>
-              <ul class="dropdown-menu dropdown-menu-dark">
-                <li>
-                  <a class="dropdown-item" href="#">Algorithm Visualizer</a>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="https://dineilie.github.io/Snake-Game/">Snake</a>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="https://dineilie.github.io/Simon-Game/">Simon</a>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </div>
-
-        <div class="fadeLeft">
-          <!-- Re\Start Game -->
-          <button type="button" class="btn game-btn btn-outline-danger me-2" id="restart">
-            <i class="bi bi-arrow-repeat"></i>
+  <body>
+    <!-- Navbar -->
+    <section>
+      <div>
+        <nav
+          class="navbar p-3 sticky-top navbar-expand-lg bg-body-tertiary border-bottom"
+        >
+          <a class="navbar-brand"><i class="bi bi-cup-hot-fill"></i></a>
+          <a
+            class="navbar-brand fs-2"
+            href="https://dineilie.github.io/Snake-Game/"
+            >Coding Challenges</a
+          >
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
           </button>
-          <button type="button" class="btn game-btn btn-success me-2" id="start">
-            Start <i class="bi bi-play-fill"></i>
-          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item dropdown">
+                <button
+                  class="btn btn-dark dropdown-toggle"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Browse More
+                </button>
+                <ul class="dropdown-menu dropdown-menu-dark">
+                  <li>
+                    <a class="dropdown-item" href="#">Algorithm Visualizer</a>
+                  </li>
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      href="https://dineilie.github.io/Snake-Game/"
+                      >Snake</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      href="https://dineilie.github.io/Simon-Game/"
+                      >Simon</a
+                    >
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
 
-          <button type="button" class="btn btn-dark me-2" data-bs-toggle="modal" data-bs-target="#difficultyPopup">
-            <i class="bi bi-gear-fill"></i>
-          </button>
-
-          <!-- Difficulty -->
-          <div class="btn-group text-end me-2" role="group" aria-label="Basic radio toggle button group">
-            <button type="button" class="btn btn-outline-dark active">
-              Sort by:
+          <div class="fadeLeft">
+            <!-- Re\Start Game -->
+            <button
+              type="button"
+              class="btn game-btn btn-outline-danger me-2"
+              id="restart"
+            >
+              <i class="bi bi-arrow-repeat"></i>
             </button>
-            <input type="radio" class="btn-check game-btn" name="btnradio" id="btnradio1" autocomplete="off" checked />
-            <label class="btn btn-dark" for="btnradio1">Bubble</label>
+            <button
+              type="button"
+              class="btn game-btn btn-success me-2"
+              id="start"
+            >
+              Start <i class="bi bi-play-fill"></i>
+            </button>
 
-            <input type="radio" class="btn-check game-btn" name="btnradio" id="btnradio2" autocomplete="off" />
-            <label class="btn btn-dark" for="btnradio2">Insertion</label>
+            <button
+              type="button"
+              class="btn btn-dark me-2"
+              data-bs-toggle="modal"
+              data-bs-target="#difficultyPopup"
+            >
+              <i class="bi bi-gear-fill"></i>
+            </button>
 
-            <input type="radio" class="btn-check game-btn" name="btnradio" id="btnradio3" autocomplete="off" />
-            <label class="btn btn-dark" for="btnradio3">Merge</label>
-
-            <input type="radio" class="btn-check game-btn" name="btnradio" id="btnradio4" autocomplete="off" />
-            <label class="btn btn-dark" for="btnradio4">Quick</label>
-
-            <input type="radio" class="btn-check game-btn" name="btnradio" id="btnradio5" autocomplete="off" />
-            <label class="btn btn-dark" for="btnradio5">Counting</label>
-          </div>
-        </div>
-      </nav>
-    </div>
-  </section>
-
-  <!-- Title & Information -->
-  <section>
-    <div class="container">
-      <!-- Game Title -->
-      <h1 id="title" class="text-center fadeDown">Algorithm Visualizer</h1><br>
-      <div class="row">
-        <div class="col" style="display: inline-block;">
-          <h2 id="comparisons0" class="text-center fadeDown"></h2>
-        </div>
-        <div class="col" style="display: inline-block;">
-          <h2 id="comparisons1" class="text-center fadeDown"></h2>
-        </div>
-        <div class="col" style="display: inline-block;">
-          <h2 id="replacements0" class="text-center fadeDown"></h2>
-        </div>
-        <div class="col" style="display: inline-block;">
-          <h2 id="replacements1" class="text-center fadeDown"></h2>
-        </div>
-        <div class="col" style="display: inline-block;">
-          <h2 id="timing0" class="text-center fadeDown"></h2>
-        </div>
-        <div class="col" style="display: inline-block;">
-          <h2 id="timing1" class="text-center fadeDown"></h2>
-        </div>
-      </div>
-
-
-      <!-- Game Menu -->
-      <div class="modal fade" id="difficultyPopup" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Settings</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <h2>Explanation:</h2>
-              <br />
-              <p>
-                By using the
-                <span style="font-weight: bold">Arrow Keys</span>, the player
-                maneuvers the snake while consuming apples.<span style="color: red">
-                  Red</span>
-                apples will increase the level and the snake's length while
-                <span style="color: blue"> Blue</span> apples will decrease
-                the level and keep the length.<br /><br />
-                <span style="color: goldenrod"> Yellow</span> apples will
-                increase the snake's speed.
-              </p>
-              <h2>Attributes:</h2>
-              <br />
-              <div class="dropdown" style="display: inline-block;">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="arraySize" data-bs-toggle="dropdown"
-                  aria-expanded="false">
-                  Array Length
-                </button>
-                <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="arraySize">
-                  <li><a id="length-50" class="game-btn dropdown-item active" href="#">50</a></li>
-                  <li><a id="length-75" class="game-btn dropdown-item" href="#">75</a></li>
-                  <li><a id="length-100" class="game-btn dropdown-item" href="#">100</a></li>
-                  <li><a id="length-150" class="game-btn dropdown-item" href="#">150</a></li>
-                </ul>
-              </div>
-              <div class="dropdown" style="display: inline-block;">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="arraySpeed"
-                  data-bs-toggle="dropdown" aria-expanded="false">
-                  Iteration Speed (miliseconds)
-                </button>
-                <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="arraySpeed">
-                  <li><a id="speed-50" class="game-btn dropdown-item active" href="#">50</a></li>
-                  <li><a id="speed-500" class="game-btn dropdown-item" href="#">500</a></li>
-                  <li><a id="speed-1000" class="game-btn dropdown-item" href="#">1000</a></li>
-                </ul>
-              </div>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                Close
+            <!-- Difficulty -->
+            <div
+              class="btn-group text-end me-2"
+              role="group"
+              aria-label="Basic radio toggle button group"
+            >
+              <button type="button" class="btn btn-outline-dark active">
+                Sort by:
               </button>
+              <input
+                type="radio"
+                class="btn-check game-btn"
+                name="btnradio"
+                id="btnradio1"
+                autocomplete="off"
+                checked
+              />
+              <label class="btn btn-dark" for="btnradio1">Bubble</label>
+
+              <input
+                type="radio"
+                class="btn-check game-btn"
+                name="btnradio"
+                id="btnradio2"
+                autocomplete="off"
+              />
+              <label class="btn btn-dark" for="btnradio2">Insertion</label>
+
+              <input
+                type="radio"
+                class="btn-check game-btn"
+                name="btnradio"
+                id="btnradio4"
+                autocomplete="off"
+              />
+              <label class="btn btn-dark" for="btnradio3">Quick</label>
+
+              <input
+                type="radio"
+                class="btn-check game-btn"
+                name="btnradio"
+                id="btnradio5"
+                autocomplete="off"
+              />
+              <label class="btn btn-dark" for="btnradio4">Counting</label>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </section>
+
+    <!-- Title & Information -->
+    <section>
+      <div class="container">
+        <!-- Game Title -->
+        <h1 id="title" class="text-center fadeDown">Algorithm Visualizer</h1>
+        <br />
+        <div class="row">
+          <div class="col" style="display: inline-block">
+            <h2 id="comparisons0" class="text-center fadeDown"></h2>
+          </div>
+          <div class="col" style="display: inline-block">
+            <h2 id="comparisons1" class="text-center fadeDown"></h2>
+          </div>
+          <div class="col" style="display: inline-block">
+            <h2 id="replacements0" class="text-center fadeDown"></h2>
+          </div>
+          <div class="col" style="display: inline-block">
+            <h2 id="replacements1" class="text-center fadeDown"></h2>
+          </div>
+          <div class="col" style="display: inline-block">
+            <h2 id="timing0" class="text-center fadeDown"></h2>
+          </div>
+          <div class="col" style="display: inline-block">
+            <h2 id="timing1" class="text-center fadeDown"></h2>
+          </div>
+        </div>
+
+        <!-- Game Menu -->
+        <div
+          class="modal fade"
+          id="difficultyPopup"
+          tabindex="-1"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Settings</h5>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body">
+                <h2>Explanation:</h2>
+                <br />
+                <p>
+                  By using the
+                  <span style="font-weight: bold">Arrow Keys</span>, the player
+                  maneuvers the snake while consuming apples.<span
+                    style="color: red"
+                  >
+                    Red</span
+                  >
+                  apples will increase the level and the snake's length while
+                  <span style="color: blue"> Blue</span> apples will decrease
+                  the level and keep the length.<br /><br />
+                  <span style="color: goldenrod"> Yellow</span> apples will
+                  increase the snake's speed.
+                </p>
+                <h2>Attributes:</h2>
+                <br />
+                <div class="dropdown" style="display: inline-block">
+                  <button
+                    class="btn btn-secondary dropdown-toggle"
+                    type="button"
+                    id="arraySize"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    Array Length
+                  </button>
+                  <ul
+                    class="dropdown-menu dropdown-menu-dark"
+                    aria-labelledby="arraySize"
+                  >
+                    <li>
+                      <a
+                        id="length-50"
+                        class="game-btn dropdown-item active"
+                        href="#"
+                        >50</a
+                      >
+                    </li>
+                    <li>
+                      <a id="length-75" class="game-btn dropdown-item" href="#"
+                        >75</a
+                      >
+                    </li>
+                    <li>
+                      <a id="length-100" class="game-btn dropdown-item" href="#"
+                        >100</a
+                      >
+                    </li>
+                    <li>
+                      <a id="length-150" class="game-btn dropdown-item" href="#"
+                        >150</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+                <div class="dropdown" style="display: inline-block">
+                  <button
+                    class="btn btn-secondary dropdown-toggle"
+                    type="button"
+                    id="arraySpeed"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    Iteration Speed (miliseconds)
+                  </button>
+                  <ul
+                    class="dropdown-menu dropdown-menu-dark"
+                    aria-labelledby="arraySpeed"
+                  >
+                    <li>
+                      <a
+                        id="speed-100"
+                        class="game-btn dropdown-item active"
+                        href="#"
+                        >100</a
+                      >
+                    </li>
+                    <li>
+                      <a id="speed-500" class="game-btn dropdown-item" href="#"
+                        >500</a
+                      >
+                    </li>
+                    <li>
+                      <a id="speed-1000" class="game-btn dropdown-item" href="#"
+                        >1000</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Close
+                </button>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Game Board -->
+    <!-- Game Board -->
+    <section>
+      <div id="game" style="margin-top: 150px"></div>
+    </section>
+
+    <!-- Footer -->
+    <section>
+      <footer id="footer">
+        <div class="container text-center">
+          <p class="text-center fadeUp">
+            © Copyright Algorithm Sorting Visualizer - by Din Eilie
+          </p>
+        </div>
+      </footer>
+    </section>
+  </body>
+
+  <!-- Scripts -->
   <section>
-    <div id="game" style="margin-top: 150px;">
-
-    </div>
+    <script
+      src="https://code.jquery.com/jquery-3.6.1.js"
+      integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+      crossorigin="anonymous"
+    ></script>
+    <script src="visual.js"></script>
   </section>
-
-  <!-- Footer -->
-  <section>
-    <footer id="footer">
-      <div class="container text-center">
-        <p class="text-center fadeUp">© Copyright Algorithm Sorting Visualizer - by Din Eilie</p>
-      </div>
-    </footer>
-  </section>
-</body>
-
-<!-- Scripts -->
-<section>
-  <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
-    crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
-    crossorigin="anonymous"></script>
-  <script src="visual.js"></script>
-</section>
-
 </html>

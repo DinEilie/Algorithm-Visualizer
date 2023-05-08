@@ -1,5 +1,5 @@
 var size = 50; // 50|75|100|150
-var speed = 50;
+var speed = 100;
 var isTaken = new Array(size);
 var comparisons = 0;
 var replacments = 0;
@@ -7,13 +7,7 @@ var time = 0;
 var array = [];
 var isPaused = false;
 var isStoped = false;
-const sortList = [
-  "bubbleSort",
-  "insertionSort",
-  "mergeSort",
-  "quickSort",
-  "countingSort",
-];
+const sortList = ["bubbleSort", "insertionSort", "quickSort", "countingSort"];
 var chosenSort = sortList[0];
 $("#restart").fadeToggle(0);
 
@@ -63,7 +57,6 @@ $(".game-btn").click(function () {
   else if (this.id == "btnradio2") chosenSort = sortList[1];
   else if (this.id == "btnradio3") chosenSort = sortList[2];
   else if (this.id == "btnradio4") chosenSort = sortList[3];
-  else if (this.id == "btnradio5") chosenSort = sortList[3];
   else if (this.id == "length-50") {
     $("#length-75").removeClass("active");
     $("#length-100").removeClass("active");
@@ -92,23 +85,20 @@ $(".game-btn").click(function () {
     $("#length-150").addClass("active");
     resetArray(150);
     console.log("length is set to " + size);
-  } else if (this.id == "speed-50") {
-    $("#speed-25").removeClass("active");
+  } else if (this.id == "speed-100") {
+    $("#speed-100").addClass("active");
     $("#speed-500").removeClass("active");
     $("#speed-1000").removeClass("active");
-    $("#speed-50").addClass("active");
-    speed = 50;
+    speed = 100;
     console.log("speed is set to " + speed);
   } else if (this.id == "speed-500") {
-    $("#speed-50").removeClass("active");
-    $("#speed-500").removeClass("active");
-    $("#speed-1000").removeClass("active");
+    $("#speed-100").removeClass("active");
     $("#speed-500").addClass("active");
+    $("#speed-1000").removeClass("active");
     speed = 500;
     console.log("speed is set to " + speed);
   } else if (this.id == "speed-1000") {
-    $("#speed-25").removeClass("active");
-    $("#speed-50").removeClass("active");
+    $("#speed-100").removeClass("active");
     $("#speed-500").removeClass("active");
     $("#speed-1000").addClass("active");
     speed = 1000;
@@ -250,7 +240,7 @@ function bubbleSort() {
             $("#" + array[j - 1] + "B").addClass("numBlock");
           }
 
-          if (speed == 50) {
+          if (speed == 100) {
             setTimeout(function () {
               $("#" + array[j] + "B").addClass("numBlockR");
               $("#" + array[j + 1] + "B").addClass("numBlockB");
@@ -280,7 +270,7 @@ function bubbleSort() {
                   comparisons++;
                   j++;
                 }, 3);
-              }, 25);
+              }, 75);
             }, 1);
           } else if (speed == 500) {
             setTimeout(function () {
@@ -390,7 +380,7 @@ function insertionSort() {
         $("#comparisons0").text("Comparisons: ");
         $("#comparisons1").text(comparisons);
         if (j > 0 && !isSum) {
-          if (speed == 50) {
+          if (speed == 100) {
             setTimeout(function () {
               // Fix color iteration
               if (j < size - 1) {
@@ -442,7 +432,7 @@ function insertionSort() {
                     isSum = true;
                   }, 3);
                 }
-              }, 25);
+              }, 75);
             }, 1);
           } else if (speed == 500) {
             setTimeout(function () {
@@ -588,125 +578,7 @@ function insertionSort() {
   }, speed);
 }
 
-function mergeSort(arr) {
-  if (arr == null) {
-    return;
-  }
-
-  if (arr.length > 1) {
-    // Set middle pointer
-    var middle = parseInt(arr.length / 2);
-
-    // Set left-half sub array
-    var left = Array(middle).fill(0);
-    for (i = 0; i < middle; i++) {
-      left[i] = arr[i];
-    }
-
-    // Set right-half sub array
-    var right = Array(arr.length - middle).fill(0);
-    for (i = middle; i < arr.length; i++) {
-      right[i - middle] = arr[i];
-    }
-
-    // Sort on both halves
-    mergeSort(left);
-    mergeSort(right);
-    callStep();
-
-    async function callStep(){
-      await step();
-    }
-
-    function step() {
-      var i = 0;
-      var j = 0;
-      var k = 0;
-      mergeInterval = setInterval(function () {
-        if (!isStoped) {
-          if (!isPaused) {
-            updateStats();
-            if (i < left.length && j < right.length) {
-              if (speed == 50) {
-                setTimeout(function () {
-                  // Fix color iteration
-                  $("#" + left[i] + "B").removeClass("numBlockB");
-                  $("#" + right[j] + "B").removeClass("numBlockR");
-                  $("#" + left[i] + "B").removeClass("numBlock");
-                  $("#" + right[j] + "B").removeClass("numBlock");
-                  $("#" + left[i] + "B").addClass("numBlockR");
-                  $("#" + right[j] + "B").addClass("numBlockB");
-
-                  // Set the current and the next
-                  var currentBlock = document.getElementById(arr[j] + "B");
-                  var preBlock = document.getElementById(arr[j - 1] + "B");
-
-                  setTimeout(function () {
-                    // Replace between the numbers
-                    if (left[i] < right[j]) {
-                      $("#" + left[i] + "B").removeClass("numBlockR");
-                      $("#" + right[j] + "B").removeClass("numBlockB");
-                      // Swap numbers
-                      var temp = arr[j];
-                      arr[j] = arr[j - 1];
-                      arr[j - 1] = temp;
-                      // Swap
-                      currentBlock.style.height = (arr[j] + 1) * 2 + "px";
-                      currentBlock.id = "currentID";
-                      preBlock.style.height = (arr[j - 1] + 1) * 2 + "px";
-                      preBlock.id = arr[j - 1] + "B";
-                      currentBlock.id = arr[j] + "B";
-                      replacments++;
-                      $("#" + arr[j - 1] + "B").addClass("numBlockB");
-                      $("#" + arr[j] + "B").addClass("numBlockR");
-                      setTimeout(function () {
-                        comparisons++;
-                        j--;
-                      }, 3);
-                    } else {
-                      setTimeout(function () {
-                        comparisons++;
-                        isSum = true;
-                      }, 3);
-                    }
-                  }, 25);
-                }, 1);
-              }
-              setTimeout(function () {
-                if (left[i] < right[j]) {
-                  arr[k] = left[i];
-                  i++;
-                } else {
-                  arr[k] = right[j];
-                  j++;
-                }
-                k++;
-              }, 1);
-            } else {
-              if (i < left.length) {
-                arr[k] = left[i];
-                i++;
-                k++;
-              } else if (j < right.length) {
-                arr[k] = right[j];
-                j++;
-                k++;
-              } else {
-                //end of step()
-                printArray();
-                clearInterval(mergeInterval);
-                return new Promise((resolve) => {
-                  resolve("resolved");
-                });
-              }
-            }
-          }
-        }
-      }, speed);
-    }
-  }
-}
-
+// Update time
 function timeCount() {
   showTime = setInterval(function () {
     if (!isStoped) {
