@@ -196,8 +196,6 @@ function toggleAll() {
     $("#btnradio1").prop("disabled", false);
     $("#btnradio2").prop("disabled", false);
     $("#btnradio3").prop("disabled", false);
-    $("#btnradio4").prop("disabled", false);
-    $("#btnradio5").prop("disabled", false);
     $("#length-50").removeClass("disabled");
     $("#length-75").removeClass("disabled");
     $("#length-100").removeClass("disabled");
@@ -207,8 +205,6 @@ function toggleAll() {
     $("#btnradio1").prop("disabled", true);
     $("#btnradio2").prop("disabled", true);
     $("#btnradio3").prop("disabled", true);
-    $("#btnradio4").prop("disabled", true);
-    $("#btnradio5").prop("disabled", true);
     $("#length-50").addClass("disabled");
     $("#length-75").addClass("disabled");
     $("#length-100").addClass("disabled");
